@@ -13,7 +13,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: neodyland/cross-rust-action@v0.0.6
+      - uses: neodyland/cross-rust-action@v0.0.7
         with:
           zigtarget: aarch64-macos-none
           rusttarget: aarch64-apple-darwin
+          cargo-build-args: --release
+      - name: List build artifacts
+        run: |
+          echo "Built artifacts:"
+          ls target/*/release/cross-rust-action-test
