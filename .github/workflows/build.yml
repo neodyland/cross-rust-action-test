@@ -46,4 +46,4 @@ jobs:
       - run: gh run download ${{ github.run_id }} -p cross-rust-action-test-*
       - name: release
         run: |
-          gh release create commit-${GITHUB_SHA:0:8} --prerelease cross-rust-action-test-*
+          gh release create commit-${GITHUB_SHA:0:8} --prerelease cross-rust-action-test-*/*
