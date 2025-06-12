@@ -27,12 +27,11 @@ jobs:
           cargo-build-args: --release
       - name: Rename artifact
         run: |
-          mkdir built
-          mv target/${{ matrix.rusttarget }}/release/cross-rust-action-test built/cross-rust-action-test
+          mv target/${{ matrix.rusttarget }}/release/cross-rust-action-test cross-rust-action-test-${{ matrix.rusttarget }}
       - uses: actions/upload-artifact@v4
         with:
           name: cross-rust-action-test-${{ matrix.rusttarget }}
-          path: built/cross-rust-action-test
+          path: cross-rust-action-test-${{ matrix.rusttarget }}
   release:
     name: Release
     runs-on: ubuntu-latest
