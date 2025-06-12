@@ -1,0 +1,19 @@
+name: Build and Push to dist
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: neodyland/cross-rust-action@v0.0.2
+        with:
+          zigtarget: aarch64-macos-none
+          rusttarget: aarch64-apple-darwin
