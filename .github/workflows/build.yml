@@ -40,6 +40,10 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - run: gh run download ${{ github.run_id }} -p cross-rust-action-test-*
       - name: release
         run: |
